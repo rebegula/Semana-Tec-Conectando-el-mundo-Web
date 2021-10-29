@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <h2>Tu lista de tareas</h2>
+        <h2>Tus tareas</h2>
         <v-row style="margin-bottom:10px;">
             <v-col cols="12" v-for="todo in todos" v-bind:key="todo">
                 <v-card @click="finalizarTodo(todo['_id'])" :class="{finished:todo.done}" style="padding:15px;cursor:pointer;" ><p :class="{textFinished:todo.done}"  style="margin:0px;">{{todo.task}}</p></v-card>
