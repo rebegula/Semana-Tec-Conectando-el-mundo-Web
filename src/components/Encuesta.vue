@@ -39,8 +39,12 @@
     <h3> De que campus eres margin</h3> 
     <div style="margin-top:10px;"></div>
     <v-select
+        v-model="usuario.campus"
         :items="items"
         label="Campuses del Tec de Monterrey"
+        required
+        @change="$v.select.$touch()"
+        @blur="$v.select.$touch()"
         dense
     ></v-select>
 
@@ -72,17 +76,19 @@
 
 
     methods:{
-    
-    
-        async Guardar(){
-            await this.axios.post('https://backend-semanatec.herokuapp.com/form',this.form).then((response)=>{
+
+      cambiarIr(){
+        this.usuario.irCampus = !this.usuario.irCampus
+      },
+      async Guardar(){
+          await this.axios.post('https://backend-semanatec.herokuapp.com/form',this.usuario).then((response)=>{
                 console.log(response);
+                this.usuario.nombre=""
+                this.usuario.apellido=""
+                this.usuario.matricula=""
             })
-            this.form.name=""
-            this.form.email=""
-            this.form.edad=""
-            this.form.genero=""
-        }
+      }
+      
       
     },
 
@@ -94,7 +100,9 @@
       usuario:{
         nombre:"",
         apellido:"",
-        matricula:""
+        matricula:"",
+        campus:"",
+        irCampus:false,
       }
     }),
     
