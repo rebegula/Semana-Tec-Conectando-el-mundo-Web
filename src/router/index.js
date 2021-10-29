@@ -5,6 +5,7 @@ import Pokemon from '../views/Pokemon'
 import Bitcoin from '../views/Bitcoin'
 import Todo from '../views/Todo'
 import Covid from '../views/Covid'
+import Casos from '../views/Casos'
 Vue.use(VueRouter)
 
 const routes = [
@@ -32,6 +33,11 @@ const routes = [
     path:'/covid',
     name:'Covid',
     component: Covid
+  },
+  {
+    path:'/casos',
+    name:'Casos',
+    component: Casos
   },
   {
     path: '/about',
